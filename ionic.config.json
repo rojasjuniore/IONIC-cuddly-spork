@@ -1,0 +1,8 @@
+{
+  "name": "firabaseIonic",
+  "app_id": "1e051041",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
