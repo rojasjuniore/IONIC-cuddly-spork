@@ -5,6 +5,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { SigUpPage } from '../pages/sig-up/sig-up';
+
+import { Authetication } from '../services/authetication';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,17 +17,31 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
+  invitedPages: Array<{ title: string, component: any }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    public auth: Authetication) {
+
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Inicio', component: HomePage },
+      { title: 'List', component: ListPage },
     ];
 
+    this.invitedPages = [
+      { title: 'Crear Cuenta', component: SigUpPage }
+
+    ];
+
+  }
+
+  logOut() {
+    this.auth.logOut();
   }
 
   initializeApp() {

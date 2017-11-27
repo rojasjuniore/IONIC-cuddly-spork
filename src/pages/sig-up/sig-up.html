@@ -1,0 +1,39 @@
+<!--
+  Generated template for the SigUpPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Registro de Cliente</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label floating>Correo Electronico</ion-label>
+    <ion-input type="email" [(ngModel)]="email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+  <div class="form-item">
+    <button ion-button (click)="createAccount()">Crear mi Cuenta</button>
+    <button ion-button (click)="createuser('google')">
+      <ion-icon name="logo-google"></ion-icon>
+      &nbsp; Ingresar con Google
+    </button>
+    <button ion-button (click)="createuser('facebook')">
+      <ion-icon name="logo-Facebook"></ion-icon>
+      &nbsp; Ingresar con Facebook
+    </button>
+  </div>
+</ion-content>
