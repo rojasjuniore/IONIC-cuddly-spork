@@ -10,13 +10,11 @@
 <ion-content padding>
 
   <div *ngIf="!auth.token">
-    inicia Sension - Parav Probar el Cloud
+    Inicia Sension para poder subir imagenes
   </div>
   <div *ngIf="!!auth.token">
-    
     <input type="file" multiple="true" (change)="fileChanges($event)">
-    <button ion-button (tab)="submit()" secondary>Subir Archivo</button>
-  
+    <button ion-button secondary (click)="submit()">Subir Archivo</button>
   </div>
 
   <!--<button ion-button secondary menuToggle>Toggle Menu</button>-->

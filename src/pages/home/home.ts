@@ -13,19 +13,18 @@ export class HomePage {
 
   constructor(public navCtrl: NavController,
     public auth: Authetication,
-    // public _uploader: Uploader
+    public _uploader: Uploader
   ) {
 
   }
 
   fileChanges(event) {
-    // this.files = event.target.files;
+    this.files = event.target.files;
   }
 
   submit() {
     if (this.files.length <= 0) return;
-    // this._uploader.uploadMultiple(this.files);
-
+    this._uploader.uploadMultiple(this.files);
   }
 
 }
