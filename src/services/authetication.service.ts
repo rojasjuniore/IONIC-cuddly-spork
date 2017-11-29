@@ -4,7 +4,7 @@ import * as firebase from 'firebase/app';
 
 const identifier = 'token';
 @Injectable()
-export class Authetication {
+export class AutheticationService {
 
 
     public token: string;
@@ -39,22 +39,33 @@ export class Authetication {
                 break;
         }
 
-        firebase
-            .auth()
-            .signInWithPopup(provider)
-            .then((result => {
-                const credential = result.credential;
-                const user_social = result.user;
-                localStorage.setItem('usuario', JSON.stringify(result));
+        return this.afAuth.auth.
+            signInWithRedirect(provider)
+            .then((result) => {
+                console.log('1: ', result.profile)
+                console.log('2: ', result)
+                console.log('3', JSON.stringify(result.profile))
 
-            })).catch((error) => {
-                console.log(error)
-            });
+                localStorage.setItem('usuario', JSON.stringify(result.profile));
+                return firebase.auth().getRedirectResult;
+            })
+
+        /* firebase
+             .auth()
+             .signInWithPopup(provider)
+             .then((result => {
+                 // const credential = result.credential;
+                 // onst user_social = result.user;
+                 localStorage.setItem('usuario', JSON.stringify(result.user));
+ 
+             })).catch((error) => {
+                 console.log(error)
+             });*/
     }
 
     setUp() {
         this.token = this.getTokenFromLS();
-        console.log(this.token)
+        // console.log(this.token)
         this.afAuth.authState.
             subscribe((data) => {
                 if (data) {
@@ -72,31 +83,9 @@ export class Authetication {
     }
 
     logOut() {
+        localStorage.clear();
         return this.afAuth.auth.signOut().then(() => {
             this.token = null;
         });
     }
-
-    /*createUserWithGoogle() {
-        let provider = new firebase.auth.GoogleAuthProvider();
-        return this.afAuth
-            .auth.
-            signInWithRedirect(provider)
-            .then((result) => {
-                return firebase.auth().getRedirectResult;
-            });
-    }
-
-    createUserWithFacebook() {
-        let provider = new firebase.auth.FacebookAuthProvider();
-        return this.afAuth
-            .auth.
-            signInWithRedirect(provider)
-            .then((result) => {
-                return firebase.auth().getRedirectResult;
-            });
-    }*/
-
-
-
 }

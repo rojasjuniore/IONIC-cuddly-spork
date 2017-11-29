@@ -4,10 +4,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-import { SigUpPage } from '../pages/sig-up/sig-up';
+// import { ListPage } from '../pages/list/list';
 
-import { Authetication } from '../services/authetication';
+import { SigUpPage } from '../pages/sig-up/sig-up';
+import { ProfilePage } from '../pages/profile/profile';
+import { BarcodeScannerPage } from '../pages/barcode-scanner/barcode-scanner';
+import { CameraPage } from '../pages/camera/camera';
+
+import { AutheticationService } from '../services/authetication.service';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,14 +27,16 @@ export class MyApp {
   constructor(public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    public auth: Authetication) {
+    public auth: AutheticationService) {
 
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Inicio', component: HomePage },
-     // { title: 'List', component: ListPage },
+      { title: 'Perfil', component: ProfilePage },
+      { title: 'Barcode Scanner', component: BarcodeScannerPage },
+      { title: 'Camera', component: CameraPage },
     ];
 
     this.invitedPages = [

@@ -4,19 +4,24 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { ProfilePage } from '../pages/profile/profile';
+import { BarcodeScannerPage } from '../pages/barcode-scanner/barcode-scanner';
+import { CameraPage } from '../pages/camera/camera';
+
+
 
 import { SigUpPage } from '../pages/sig-up/sig-up';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // import { firebaseConfig } from '../environments/firebase-config';
-import { Authetication } from '../services/authetication';
-import { Uploader } from '../services/uploader';
+import { AutheticationService } from '../services/authetication.service';
+import { UploaderService } from '../services/uploader.service';
+import { firebaseService } from '../services/firebase.service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDNws2Pa1m_UBrVhIw9F5mp7Pz7kOXw3Lg",
@@ -31,8 +36,10 @@ export const firebaseConfig = {
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
-    SigUpPage
+    ProfilePage,
+    SigUpPage,
+    BarcodeScannerPage,
+    CameraPage
   ],
   imports: [
     BrowserModule,
@@ -45,14 +52,17 @@ export const firebaseConfig = {
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
-    SigUpPage
+    ProfilePage,
+    SigUpPage,
+    BarcodeScannerPage,
+    CameraPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    Authetication,
-    Uploader,
+    AutheticationService,
+    UploaderService,
+    firebaseService,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

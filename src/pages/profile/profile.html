@@ -1,0 +1,48 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Perfil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+
+  <form (ngSubmit)="logForm()">
+    <ion-row>
+      <ion-col text-center>
+        <ion-img width="220" height="220" [src]="data_user.img" name="img"></ion-img>
+        <!--<img src="{{ data_user.img }}" class="center" alt="">-->
+      </ion-col>
+    </ion-row>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="data_user.displayName" name="displayName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input [(ngModel)]="data_user.email" name="email" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Direccion</ion-label>
+        <ion-textarea [(ngModel)]="data_user.addres" name="addres"></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <div padding>
+      <button ion-button block>Guardar</button>
+    </div>
+  </form>
+
+</ion-content>

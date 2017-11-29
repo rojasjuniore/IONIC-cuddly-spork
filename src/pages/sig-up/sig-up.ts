@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Authetication } from '../../services/authetication';
+import {
+  IonicPage,
+  NavController,
+  NavParams
+} from 'ionic-angular';
+import { AutheticationService } from '../../services/authetication.service'
 
 
 /**
@@ -22,7 +26,7 @@ export class SigUpPage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    private auth: Authetication
+    private auth: AutheticationService
   ) { }
 
   ionViewDidLoad() {

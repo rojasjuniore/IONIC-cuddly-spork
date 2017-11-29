@@ -13,8 +13,24 @@
     Inicia Sension para poder subir imagenes
   </div>
   <div *ngIf="!!auth.token">
-    <input type="file" multiple="true" (change)="fileChanges($event)">
-    <button ion-button secondary (click)="submit()">Subir Archivo</button>
+    <ion-row>
+      <ion-col text-center>
+        <input type="file" multiple="true" (change)="fileChanges($event)">
+        <hr>
+        <button ion-button secondary (click)="submit()">
+          <ion-icon ios="ios-cloud-upload" md="md-cloud-upload"> Subir Archivo </ion-icon>
+        </button>
+        <div *ngIf="_uploader.successful_text">
+          <hr>
+          <span>Subida realizada con éxito</span>
+        </div>
+
+        <div *ngIf="_uploader.successful_gif">
+          <img src="http://cdn.osxdaily.com/wp-content/uploads/2013/07/dancing-banana.gif">
+        </div>
+      </ion-col>
+
+    </ion-row>
   </div>
 
   <!--<button ion-button secondary menuToggle>Toggle Menu</button>-->

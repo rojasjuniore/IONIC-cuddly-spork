@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Authetication } from '../../services/authetication'
-import { Uploader } from '../../services/uploader'
+import { AutheticationService } from '../../services/authetication.service'
+import { UploaderService } from '../../services/uploader.service'
 
 @Component({
   selector: 'page-home',
@@ -12,8 +12,8 @@ export class HomePage {
   files: any;
 
   constructor(public navCtrl: NavController,
-    public auth: Authetication,
-    public _uploader: Uploader
+    public auth: AutheticationService,
+    public _uploader: UploaderService
   ) {
 
   }
@@ -25,6 +25,7 @@ export class HomePage {
   submit() {
     if (this.files.length <= 0) return;
     this._uploader.uploadMultiple(this.files);
+    this.files = null;
   }
 
 }
